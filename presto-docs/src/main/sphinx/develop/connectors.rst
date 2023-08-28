@@ -81,3 +81,12 @@ Given a split and a list of columns, the record set provider is
 responsible for delivering data to the Presto execution engine.
 It creates a ``RecordSet``, which in turn creates a ``RecordCursor``
 that is used by Presto to read the column values for each row.
+
+Files with @JsonCreator annotation
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If any of your files have @JsonCreator annotation,
+make sure that the fields marked with @JsonProperty should also
+have a corresponding getter annotated with @JsonProperty annotation.
+Otherwise, the fields, without the getter, will have a null value during
+deserialization process.
